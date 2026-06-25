@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        
+        header {
+            background: #1e3a8a;
+            color: white;
+            padding: 15px 0;
+        }
+
+        nav {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 70px 20px;
+            background: white;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .hero button {
+            padding: 12px 25px;
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .features {
+            width: 90%;
+            margin: 40px auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 23%;
+            background: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .benefits {
+            width: 90%;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+        }
+
+        .benefits h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .benefits ul {
+            padding-left: 20px;
+        }
+
+        footer {
+            background: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media(max-width:768px) {
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav ul {
+                flex-direction: column;
+                margin-top: 10px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .cards {
+                flex-direction: column;
+            }
+
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <nav>
+
+            <h2>TechNova</h2>
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Product</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <section class="hero">
+
+        <h1>Smart Digital Solution for Your Business</h1>
+
+        <p>Grow your business with our modern and easy-to-use digital platform.</p>
+
+        <button>Get Started</button>
+
+    </section>
+
+    <section class="features">
+
+        <h2>Our Features</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Fast Performance</h3>
+                <p>Quick and reliable services for users.</p>
+            </div>
+
+            <div class="card">
+                <h3>Secure</h3>
+                <p>Your information is protected with strong security.</p>
+            </div>
+
+            <div class="card">
+                <h3>Easy to Use</h3>
+                <p>Simple interface for everyone.</p>
+            </div>
+
+            <div class="card">
+                <h3>24/7 Support</h3>
+                <p>Our support team is always available.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="benefits">
+
+        <h2>Why Choose Us?</h2>
+
+        <ul>
+            <li>Easy registration process</li>
+            <li>Affordable pricing</li>
+            <li>Cloud-based services</li>
+            <li>Responsive design</li>
+            <li>Trusted by many customers</li>
+        </ul>
+
+    </section>
+
+    <footer>
+
+        <p>Email: support@technova.com</p>
+
+        <p>Phone: +91 9876543210</p>
+
+        <p>Follow us: Facebook | Instagram | LinkedIn</p>
+
+        <p>&copy; 2026 TechNova</p>
+
+    </footer>
+
+</body>
+
+</html>

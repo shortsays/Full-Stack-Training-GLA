@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - TechNova</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #1e3a8a;
+            color: white;
+            padding: 15px 0;
+        }
+
+        nav {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 50%;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border: 1px solid #ccc;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #999;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            margin-top: 10px;
+        }
+
+        .radio-group label,
+        .checkbox-group label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #1e3a8a;
+            color: white;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        footer {
+            background: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        @media(max-width:768px) {
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav ul {
+                flex-direction: column;
+                margin-top: 10px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .container {
+                width: 90%;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <nav>
+
+            <h2>TechNova</h2>
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Product</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <div class="container">
+
+        <h1>Registration / Contact Form</h1>
+
+        <form>
+
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your name" required>
+
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email" required>
+
+            <label>Phone Number</label>
+            <input type="tel" pattern="[0-9]{10}" placeholder="10-digit mobile number" required>
+
+            <label>Select Date</label>
+            <input type="date" required>
+
+            <label>Select Plan</label>
+            <select required>
+                <option value="">Choose a Plan</option>
+                <option>Basic</option>
+                <option>Standard</option>
+                <option>Premium</option>
+            </select>
+
+            <label>Gender</label>
+
+            <div class="radio-group">
+
+                <label>
+                    <input type="radio" name="gender" required>
+                    Male
+                </label>
+
+                <label>
+                    <input type="radio" name="gender">
+                    Female
+                </label>
+
+                <label>
+                    <input type="radio" name="gender">
+                    Other
+                </label>
+
+            </div>
+
+            <label>Services Interested In</label>
+
+            <div class="checkbox-group">
+
+                <label>
+                    <input type="checkbox">
+                    Web Development
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    Mobile App
+                </label>
+                <label>
+                    <input type="checkbox">
+                    Cloud Services
+                </label>
+                <label>
+                    <input type="checkbox">
+                    Digital Marketing
+                </label>
+            </div>
+            <label>Message</label>
+            <textarea rows="5" placeholder="Write your message here..." required></textarea>
+            <div class="buttons">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+    <footer>
+        <p>Email: support@technova.com</p>
+        <p>Phone: +91 9876543210</p>
+        <p>&copy; 2026 TechNova</p>
+    </footer>
+</body>
+</html>
