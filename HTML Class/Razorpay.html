@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Razorpay Header Clone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rp-blue:#305EFF;
+    --rp-login-text:#2950DA;
+    --rp-text:#192839;
+    --header-h:80px;
+    --max-width:1280px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color:var(--rp-text);
+  }
+
+  a{text-decoration:none;color:inherit;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+
+  /* ===== HEADER ===== */
+  .site-header{
+    width:100%;
+    height:var(--header-h);
+    background:#ffffff;
+    position:sticky;
+    top:0;
+    z-index:1000;
+  }
+
+  .nav-container{
+    max-width:var(--max-width);
+    height:100%;
+    margin:0 auto;
+    padding:0 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+  }
+
+  /* Left container: logo + menu items */
+  .left-elements{
+    display:flex;
+    align-items:center;
+    gap:48px;
+  }
+
+  /* Logo */
+  .logo{
+    display:flex;
+    align-items:center;
+    flex-shrink:0;
+  }
+  .logo svg{display:block;width:117px;height:25px;}
+
+  /* Nav links */
+  .nav-links{
+    display:flex;
+    align-items:center;
+    list-style:none;
+    gap:32px;
+  }
+  .nav-links a{
+    font-size:14px;
+    font-weight:400;
+    letter-spacing:-0.03em;
+    line-height:1.2em;
+    color:var(--rp-text);
+    white-space:nowrap;
+    transition:color .15s ease;
+    position:relative;
+    padding-bottom:2px;
+  }
+  .nav-links a:hover{color:var(--rp-blue);}
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0;right:0;
+    bottom:-6px;
+    height:2px;
+    background:var(--rp-blue);
+    border-radius:2px 2px 0 0;
+    opacity:0;
+    transition:opacity .15s ease;
+  }
+  .nav-links a:hover::after{opacity:1;}
+
+  /* Right side */
+  .nav-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    flex-shrink:0;
+  }
+
+  .icon-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:26px;height:28px;
+    color:#000;
+  }
+  .icon-btn:hover{opacity:.75;}
+  .icon-btn svg{width:100%;height:100%;}
+
+  .locale-selector{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:0;
+  }
+  .locale-selector .flag{
+    width:28px;height:21px;
+    border-radius:2px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .locale-selector .flag svg{width:100%;height:100%;display:block;}
+  .locale-selector .chevron{width:24px;height:24px;opacity:.72;flex-shrink:0;}
+
+  .btn{
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:-0.02em;
+    border-radius:4px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    white-space:nowrap;
+    transition:all .15s ease;
+    height:40px;
+  }
+  .btn-login{
+    background:rgba(255,255,255,0);
+    color:var(--rp-login-text);
+    border:1px solid var(--rp-blue);
+    padding:0 20px;
+  }
+  .btn-login:hover{
+    background:#f2f5ff;
+  }
+  .btn-signup{
+    background:var(--rp-blue);
+    color:#ffffff;
+    padding:0 16px 0 20px;
+  }
+  .btn-signup:hover{
+    background:#2950da;
+  }
+  .btn-signup svg{width:20px;height:20px;}
+
+  /* Mobile toggle */
+  .menu-toggle{
+    display:none;
+    width:36px;height:36px;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .menu-toggle svg{width:22px;height:22px;}
+
+  /* ===== MOBILE NAV PANEL ===== */
+  .mobile-nav{
+    position:fixed;
+    top:var(--header-h);
+    left:0;right:0;
+    bottom:0;
+    background:#fff;
+    transform:translateX(100%);
+    transition:transform .25s ease;
+    overflow-y:auto;
+    z-index:999;
+  }
+  .mobile-nav.open{transform:translateX(0);}
+  .mobile-nav ul{list-style:none;padding:8px 24px 24px;}
+  .mobile-nav li a{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 0;
+    font-size:16px;
+    font-weight:500;
+    letter-spacing:-0.02em;
+    border-bottom:1px solid #f0f1f4;
+    color:var(--rp-text);
+  }
+  .mobile-nav .mobile-actions{
+    padding:20px 24px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    border-top:1px solid #f0f1f4;
+  }
+  .mobile-nav .btn{width:100%;}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:1180px){
+    .left-elements{gap:28px;}
+    .nav-links{gap:22px;}
+  }
+
+  @media (max-width:980px){
+    .nav-links{display:none;}
+    .btn-login{display:none;}
+  }
+
+  @media (max-width:768px){
+    :root{--header-h:64px;}
+    .nav-container{padding:0 16px;}
+    .icon-btn{display:none;}
+    .btn-signup{padding:0 14px;font-size:13.5px;height:36px;}
+    .menu-toggle{display:flex;}
+    .nav-right{gap:12px;}
+  }
+
+  @media (max-width:480px){
+    .logo svg{width:96px;height:20px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-container">
+
+    <div class="left-elements">
+      <!-- Logo -->
+      <a href="#" class="logo" aria-label="Razorpay Home">
+        <svg viewBox="0 0 140 30" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 28L20 2H27L11 28H4Z" fill="#0A2540"/>
+          <path d="M17 28L27 12L31 19L24 28H17Z" fill="#3395FF"/>
+          <text x="38" y="22" font-family="Inter, sans-serif" font-size="21" font-weight="700" fill="#0A2540" letter-spacing="-0.5">Razorpay</text>
+        </svg>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#">Agentic Stack</a></li>
+          <li><a href="#">Payments</a></li>
+          <li><a href="#">Banking+</a></li>
+          <li><a href="#">Payroll</a></li>
+          <li><a href="https://razorpay.com/engage/">Engage</a></li>
+          <li><a href="#">Partners</a></li>
+          <li><a href="#">Resources</a></li>
+          <li><a href="https://razorpay.com/pricing/">Pricing</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Right side -->
+    <div class="nav-right">
+
+      <!-- Support icon -->
+      <a href="#" class="icon-btn" aria-label="Support" title="Support">
+        <svg viewBox="0 0 26 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 16.5V13.5C4 7.7 8.5 3 14.5 3C20.5 3 25 7.7 25 13.5V16.5" stroke="black" stroke-width="2" stroke-linecap="round"/>
+          <rect x="1.5" y="15.5" width="5.5" height="8.5" rx="2.5" stroke="black" stroke-width="2"/>
+          <rect x="20" y="15.5" width="5.5" height="8.5" rx="2.5" stroke="black" stroke-width="2"/>
+          <path d="M22.7 24c0 2.2-2 3.5-5.2 3.7" stroke="black" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </a>
+
+      <!-- Locale / flag selector -->
+      <button class="locale-selector" aria-label="Select country">
+        <span class="flag">
+          <svg viewBox="0 0 28 21" xmlns="http://www.w3.org/2000/svg">
+            <rect width="28" height="7" y="0" fill="#FF9933"/>
+            <rect width="28" height="7" y="7" fill="#FFFFFF"/>
+            <rect width="28" height="7" y="14" fill="#138808"/>
+            <circle cx="14" cy="10.5" r="2.3" fill="none" stroke="#000088" stroke-width="0.45"/>
+            <circle cx="14" cy="10.5" r="0.45" fill="#000088"/>
+          </svg>
+        </span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" fill="rgba(0,0,0,0.72)"/>
+        </svg>
+      </button>
+
+      <a href="#" class="btn btn-login">Login</a>
+      <a href="#" class="btn btn-signup">
+        Sign Up
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M14.7071 5.29289C14.3166 4.90237 13.6834 4.90237 13.2929 5.29289C12.9024 5.68342 12.9024 6.31658 13.2929 6.70711L17.5858 11H4C3.44772 11 3 11.4477 3 12C3 12.5523 3.44772 13 4 13H17.5858L13.2929 17.2929C12.9024 17.6834 12.9024 18.3166 13.2929 18.7071C13.6834 19.0976 14.3166 19.0976 14.7071 18.7071L20.7071 12.7071C21.0976 12.3166 21.0976 11.6834 20.7071 11.2929L14.7071 5.29289Z" fill="#fff"/>
+        </svg>
+      </a>
+
+      <!-- Mobile menu toggle -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <svg id="menuIcon" viewBox="0 0 24 24" fill="none">
+          <path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav panel -->
+  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a href="#">Agentic Stack</a></li>
+      <li><a href="#">Payments</a></li>
+      <li><a href="#">Banking+</a></li>
+      <li><a href="#">Payroll</a></li>
+      <li><a href="https://razorpay.com/engage/">Engage</a></li>
+      <li><a href="#">Partners</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="https://razorpay.com/pricing/">Pricing</a></li>
+    </ul>
+    <div class="mobile-actions">
+      <a href="#" class="btn btn-login">Login</a>
+      <a href="#" class="btn btn-signup">Sign Up</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  const menuIcon = document.getElementById('menuIcon');
+
+  const closeIconPath = 'M6 6L18 18M18 6L6 18';
+  const openIconPath = 'M3 6H21M3 12H21M3 18H21';
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    menuIcon.innerHTML = isOpen
+      ? `<path d="${closeIconPath}" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`
+      : `<path d="${openIconPath}" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.mobile-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      menuIcon.innerHTML = `<path d="${openIconPath}" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`;
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+
+</body>
+</html>
